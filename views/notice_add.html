@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>{{title}}</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+</head>
+<body>
+<header class="navbar navbar-static-top bs-docs-nav">
+    <div class="container">
+        <a href="/notices" class="btn " role="button">首页</a>
+        <a href="/notice/add" class="btn active" role="button">新增</a>
+    </div>
+</header>
+<div class="container">
+
+    <form class="form-horizontal col-sm-8" method="post" action="/notice/add">
+        <div class="form-group">
+            <label for="title" class="col-sm-3 control-label">标题</label>
+            <div class="col-sm-5">
+                <input type="text" name="title" class="form-control" id="title" placeholder="标题" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="content" class="col-sm-3 control-label">内容</label>
+            <div class="col-sm-5">
+                <textarea class="form-control" rows="3" id="content" name="content" required></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="datepicker" class="col-sm-3 control-label">提醒时间</label>
+            <div class="col-sm-5">
+                <input type="text" name="datepicker" class="form-control" id="datepicker" readonly required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="alertSet" class="col-sm-3 control-label">通知设置</label>
+            <div class="col-sm-5">
+                <select class="form-control" id="alertSet" name="alertSet">
+                    <option value="five_minutes_before" selected>提前五分钟</option>
+                    <option value="thirty_minutes_before">提前半小时</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="repeatSet" class="col-sm-3 control-label">重复提醒设置</label>
+            <div class="col-sm-5">
+                <select class="form-control" id="repeatSet" name="repeatSet">
+                    <option value="never" selected>从不</option>
+                    <option value="day">每天</option>
+                    <!--<option value="week">每周</option>-->
+                    <!--<option value="month">每月</option>-->
+                    <!--<option value="year">每年</option>-->
+                </select>
+            </div>
+        </div>
+
+        <fieldset id="repeatForm" hidden>
+            <div class="form-group">
+                <label for="repeatEndSet" class="col-sm-3 control-label">重复提醒结束条件</label>
+                <div class="col-sm-5">
+                    <select class="form-control" id="repeatEndSet" name="repeatEndSet">
+                        <option value="never" selected>从不结束</option>
+                        <option value="after_date">某天之后结束</option>
+                    </select>
+                </div>
+            </div>
+
+            <fieldset id="alertEndForm" hidden>
+                <div class="form-group">
+                    <label for="alertpicker" class="col-sm-3 control-label">提醒结束时间</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="alertpicker" class="form-control" id="alertpicker" readonly>
+                    </div>
+                </div>
+            </fieldset>
+
+        </fieldset>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">提交</button>
+            </div>
+        </div>
+
+
+        <p> &nbsp; </p>
+        <p> &nbsp; </p>
+        <p> &nbsp; </p>
+        <p> &nbsp; </p>
+        <p> &nbsp; </p>
+        <p> &nbsp; </p>
+        <p> &nbsp; </p>
+        <p> &nbsp; </p>
+
+
+    </form>
+</div>
+
+
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!--<script src="https://cdn.bootcss.com/moment.js/2.22.1/moment.min.js"></script>-->
+
+<script src="/js/bootstrap-datetimepicker.js"></script>
+
+<script type="text/javascript" src="/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $("#datepicker").datetimepicker({
+            language: 'zh-CN',
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true,
+            startDate: new Date(),
+        });
+
+        $("#alertpicker").datetimepicker({
+            language: 'zh-CN',
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 2,
+            startDate: new Date(),
+        });
+
+        $('#repeatSet').on('change', function () {
+            if ($("#repeatSet").val() !== 'never') {
+                $('#repeatForm').show();
+            } else {
+                $('#repeatForm').hide();
+            }
+        })
+
+        $('#repeatEndSet').on('change', function () {
+            if ($("#repeatEndSet").val() !== 'never') {
+                $('#alertEndForm').show();
+            } else {
+                $('#alertEndForm').hide();
+            }
+        })
+
+        var height = $('body').height();
+        $('#alertpicker')
+            .datetimepicker()
+            .on('show', function () {
+
+                $('body').height(height + 100);
+            })
+
+        $('form').submit(function () {
+            if ($('#datepicker').val() === '') {
+                $('#datepicker').datetimepicker('show');
+                return false;
+            }
+            if ($('#alertpicker').val() === ''
+                && $("#repeatEndSet").val() !== 'never'
+                && $("#repeatSet").val() !== 'never') {
+                $('#alertpicker').datetimepicker('show');
+                return false;
+            }
+            return true;
+        });
+
+    });
+
+</script>
+</body>
+</html>

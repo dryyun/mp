@@ -1,0 +1,21 @@
+{
+  "user": {
+    "available": 0,
+    "deleted": 10,
+    "pending": 11,
+    "unsubscribe": 12
+  },
+  "location": {
+    "available": 0,
+    "deleted": 10
+  },
+  "notice": {
+    "available": 0,
+    "deleted": 10,
+    "overdue": 11
+  },
+  "notice_list": {
+    "doing": 0,
+    "confirmed": 1
+  }
+}

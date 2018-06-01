@@ -1,0 +1,19 @@
+{
+  "mp": {
+    "appid": "xxxx",
+    "appsecret": "xxxx",
+    "token": "xxxx",
+    "encodingAESKey": "xxxx",
+    "api": "https://api.weixin.qq.com"
+  },
+  "amap": {
+    "key": "xxxx",
+    "api": "http://restapi.amap.com/v3"
+  },
+  "tuling123": {
+    "api": "http://openapi.tuling123.com/openapi/api/v2",
+    "keys": [
+      "xxxx"
+    ]
+  }
+}

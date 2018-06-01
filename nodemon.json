@@ -1,0 +1,9 @@
+{
+  "verbose": false,
+  "ignore": [
+    "*.test.js",
+    "node_modules/*",
+    "sessions/*"
+  ],
+  "delay": "500"
+}

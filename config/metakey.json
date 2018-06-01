@@ -1,0 +1,4 @@
+{
+  "access_token": "access_token 是公众号的全局唯一接口调用凭据，通过 cronJob.js 每一小时刷新一次",
+  "answer_mode": "会话模式，可以使用的值，normal_answer 和 robot_answer ，可以参考 menu.json 配置"
+}

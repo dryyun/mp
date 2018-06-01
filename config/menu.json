@@ -1,0 +1,29 @@
+{
+  "button": [
+    {
+      "name": "功能菜单",
+      "sub_button": [
+        {
+          "type": "click",
+          "name": "清除位置",
+          "key": "clear_location"
+        },
+        {
+          "type": "click",
+          "name": "机器人会话",
+          "key": "robot_answer"
+        },
+        {
+          "type": "click",
+          "name": "普通会话",
+          "key": "normal_answer"
+        },
+        {
+          "type": "view",
+          "name": "消息提醒",
+          "url": "https://xxxx.com/notices"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "debug": false,
+  "server": {
+    "port": 3000,
+    "url": "https://xxxx.com"
+  },
+  "mysql": {
+    "host": "xxxx",
+    "port": 3306,
+    "user": "xxxx",
+    "password": "xxxx",
+    "database": "mp"
+  }
+}
